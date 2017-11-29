@@ -1,8 +1,3 @@
-
-# coding: utf-8
-
-# In[1]:
-
 import numpy as np
 import matplotlib.pyplot as plt
 from pylab import *
@@ -13,7 +8,6 @@ import matplotlib.animation as animation
 # This command to import some physicals constants
 
 
-# In[57]:
 
 N = 10 ** 3
 B0 = 3             # Magnetic field
@@ -24,7 +18,6 @@ ee = -1
 ep = 1
 
 
-# In[58]:
 
 x = np.zeros((N,3))
 v = np.zeros((N,3))
@@ -36,7 +29,6 @@ dt = ( 0.1 * m_e ) / (np.abs(ee) * B0)
 time = np.linspace(0, dt*N)
 
 
-# In[61]:
 
 mass = [m_e, m_p]
 charge = [ee, ep]
