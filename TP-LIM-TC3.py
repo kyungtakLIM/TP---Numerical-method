@@ -121,7 +121,18 @@ for k in range(N_iteration):
 
 t2=time.clock()-t2
 
+print("Calculation time of convergence = ", int(t2//60), "(m)", int(t2%60), "(s)")
 
+t2=time.clock()
+Vact_SOR = np.zeros((Nx,Ny))
+N_iteration = 2000
+omega = 1.5
+
+for k in range(N_iteration):
+    for i in range(Nx):
+        for j in range(Ny):
+            Vact_SOR[i,j] = (1-omega)*Vact[i,j] + (Ve(i,j)*V(i+1,j) + Vo(i,j) * V(i-1,j) + Vn(i,j) * V(i,j+1) + Vs(i,j) * V(i,j-1) - rho(i,j))* omega / Vc(i,j) 
+t2=time.clock()-t2
 print("Calculation time of convergence = ", int(t2//60), "(m)", int(t2%60), "(s)")
 
 
