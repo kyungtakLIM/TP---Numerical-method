@@ -170,40 +170,39 @@ plt.show();
 plt.clf();
 
 
-# In[11]:
 
 # WRITE HERE THE DERIVATION OF THE ELECTRIC FIELD AND PLOT IT
 Ex_field = np.zeros((Nx,Ny))
 Ey_field = np.zeros((Nx,Ny))
-for i in range(Nx):
-    for j in range(Ny):
-        Ex_field[i,j] = -2 * E(i+1,j) * (V(i+1,j) - V(i,j)) / (dx * (E(i,j) + E(i+1,j) ))
+for i in range(Nx-1):
+    for j in range(Ny-1):
+        Ex_field[i,j] = -2 * E(i+1,j) * (Vact[i+1,j] - Vact[i,j]) / (dx * (E(i,j) + E(i+1,j) ))
 
-for i in range(Nx):
-    for j in range(Ny):
-        Ey_field[i,j] = -2 * E(i,j+1) * (V(i,j+1) - V(i,j)) / (dy * (E(i,j) + E(i,j+1) ))
+for i in range(Nx-1):
+    for j in range(Ny-1):
+        Ey_field[i,j] = -2 * E(i,j+1) * (Vact[i,j+1] - Vact[i,j]) / (dy * (E(i,j) + E(i,j+1) ))
 
 
-# In[12]:
+# In[104]:
 
-fig, ax = plt.subplots(dpi = 150)
-ax.imshow(Ex_field)
+ig, ax = plt.subplots(dpi = 150)
+contour_plot = plt.contourf(np.linspace(dx/2. , 1.-dx/2., Nx), np.linspace( dx/2. , 1.-dx/2. , Ny), np.transpose(Ex_field), 100, extend='both');
+plt.colorbar(contour_plot);
 plt.xlabel("x [cm]");
 plt.ylabel("y [cm]");
 plt.title("Electricfield in $x$-direction")
-plt.savefig("Ex_field_%g_TC2.png" %N_iteration);
-plt.show()
+plt.savefig("Ex_field_%g.png" %N_iteration);
+plt.show();
 
-fig, ax = plt.subplots(dpi = 150)
+
+ig, ax = plt.subplots(dpi = 150)
+contour_plot = plt.contourf(np.linspace(dx/2. , 1.-dx/2., Nx), np.linspace( dx/2. , 1.-dx/2. , Ny), np.transpose(Ey_field), 100, extend='both');
+plt.colorbar(contour_plot);
 plt.xlabel("x [cm]");
 plt.ylabel("y [cm]");
 plt.title("Electricfield in $y$-direction")
-plt.savefig("Ey_field_%g_TC2.png" %N_iteration);
-plt.imshow(Ey_field)
-plt.show()
-
-
-# In[ ]:
+plt.savefig("Ey_field_%g.png" %N_iteration);
+plt.show();
 
 
 
