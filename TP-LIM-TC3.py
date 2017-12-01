@@ -31,16 +31,16 @@ for i in range(Nx-1):
     Y.append( (Ym[i] + Ym[i+1]) / 2 )
 
 # Potentials on the anode and cathode
-Ua = 100       #        in V (right side)
-Uc = 10        # (left side)
+Ua = 0       #        in V (right side)
+Uc = 0        # (left side)
 
 eps0 = 8.85E-14   # F/cm
 
 # dielectric layers
-epsdiel= 5    # default =1 (no dielectric)
+epsdiel= 1    # default =1 (no dielectric)
 
-nxdg = Nx/10 + 5                    # dielectric anode side
-nxdd = Nx/10 + 5                # dielectric cathode side  
+nxdg = Nx/10                   # dielectric anode side
+nxdd = Nx/10              # dielectric cathode side  
 
 # definition of epsilon
 # Size of system is 50, in two end points [ 0 , nxdg ] and [Nx - nxdd ,Nx ] we use relative permittivity
@@ -95,7 +95,7 @@ def rho(i,j):
         if i == Nx-1:
             return -2*E(i,j)/(dx*dx)*Ua
         else:
-            return 0
+            return -1*E(i,j)*(2*np.pi)**2 * np.sin(2 * np.pi * Xm[i])
 
 def V(i,j):
     if i == -1 or i == Nx or j == -1 or j == Ny:
