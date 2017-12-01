@@ -9,9 +9,6 @@ from scipy.constants import e, c, epsilon_0, m_e
 from mpl_toolkits.mplot3d import Axes3D
 import mpl_toolkits.mplot3d.axes3d as p3
 
-
-# In[2]:
-
 # mesh
 
 Nx = 100
@@ -20,9 +17,6 @@ dx = 1.0/Nx
 dy = 1.0/Ny
 print("mesh")
 print("Nx=",Nx,"Ny=",Ny)
-
-
-# In[3]:
 
 # ADD HERE THE DEFINITION OF X and XM 	
 # X = cell center / Xm = grid points
@@ -36,26 +30,17 @@ for i in range(Nx-1):
     X.append( (Xm[i] + Xm[i+1]) / 2 )
     Y.append( (Ym[i] + Ym[i+1]) / 2 )
 
-
-# In[4]:
-
 # Potentials on the anode and cathode
 Ua = 100       #        in V (right side)
 Uc = 10        # (left side)
 
 eps0 = 8.85E-14   # F/cm
 
-
-# In[5]:
-
 # dielectric layers
 epsdiel= 5    # default =1 (no dielectric)
 
 nxdg = Nx/10 + 5                    # dielectric anode side
 nxdd = Nx/10 + 5                # dielectric cathode side  
-
-
-# In[6]:
 
 # definition of epsilon
 # Size of system is 50, in two end points [ 0 , nxdg ] and [Nx - nxdd ,Nx ] we use relative permittivity
@@ -65,9 +50,6 @@ def E(i,j):
         return eps0*epsdiel
     else:
         return eps0
-
-
-# In[7]:
 
 # Coefficients
 
@@ -122,8 +104,6 @@ def V(i,j):
         return Vact[i,j]
 
 
-# In[ ]:
-
 t2=time.clock()
 
 Vact = np.zeros((Nx,Ny))
@@ -131,8 +111,7 @@ Vact = np.zeros((Nx,Ny))
 # CODE HERE THE GAUSSE-SEIDEL AND/OR SOR
 
 
-N_iteration = 200
-
+N_iteration = 3000
 
 for k in range(N_iteration):
     for i in range(Nx):
@@ -143,12 +122,8 @@ for k in range(N_iteration):
 t2=time.clock()-t2
 
 
-# In[24]:
-
 print("Calculation time of convergence = ", int(t2//60), "(m)", int(t2%60), "(s)")
 
-
-# In[10]:
 
 # FIGURES
 fig, ax = plt.subplots(dpi = 150)
