@@ -163,12 +163,12 @@ plt.clf();
 # WRITE HERE THE DERIVATION OF THE ELECTRIC FIELD AND PLOT IT
 Ex_field = np.zeros((Nx,Ny))
 Ey_field = np.zeros((Nx,Ny))
-for i in range(Nx):
-    for j in range(Ny):
+for i in range(Nx-1):
+    for j in range(Ny-1):
         Ex_field[i,j] = -2 * E(i+1,j) * (Vact[i+1,j] - Vact[i,j]) / (dx * (E(i,j) + E(i+1,j) ))
 
-for i in range(Nx):
-    for j in range(Ny):
+for i in range(Nx-1):
+    for j in range(Ny-1):
         Ey_field[i,j] = -2 * E(i,j+1) * (Vact[i,j+1] - Vact[i,j]) / (dy * (E(i,j) + E(i,j+1) ))
 
 
