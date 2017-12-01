@@ -1,8 +1,3 @@
-
-# coding: utf-8
-
-# In[1]:
-
 import numpy as np
 import matplotlib.pyplot as plt
 import csv
@@ -136,12 +131,12 @@ Vact = np.zeros((Nx,Ny))
 # CODE HERE THE GAUSSE-SEIDEL AND/OR SOR
 
 
-N_iteration = 300
+N_iteration = 200
 
 
 for k in range(N_iteration):
-    for i in range(Nx-1):
-        for j in range(Ny-1):
+    for i in range(Nx):
+        for j in range(Ny):
             Vact[i,j] = ( Ve(i,j)*V(i+1,j) + Vo(i,j) * V(i-1,j) + Vn(i,j) * V(i,j+1) + Vs(i,j) * V(i,j-1) - rho(i,j) ) / Vc(i,j)
 # END OF THE GAUSSE-SEIDEL AND/OR SOR
 
