@@ -1,8 +1,3 @@
-
-# coding: utf-8
-
-# In[94]:
-
 import numpy as np
 import matplotlib.pyplot as plt
 import csv
@@ -15,8 +10,6 @@ from mpl_toolkits.mplot3d import Axes3D
 import mpl_toolkits.mplot3d.axes3d as p3
 
 
-# In[95]:
-
 # mesh
 
 Nx = 100
@@ -25,9 +18,6 @@ dx = 1.0/Nx
 dy = 1.0/Ny
 print("mesh")
 print("Nx="),Nx,("Ny="),Ny
-
-
-# In[96]:
 
 # ADD HERE THE DEFINITION OF X and XM 	
 # X = cell center / Xm = grid points
@@ -140,15 +130,13 @@ N_iteration = 2000
 
 
 for k in range(N_iteration):
-    for i in range(Nx-1):
-        for j in range(Ny-1):
+    for i in range(Nx):
+        for j in range(Ny):
             Vact[i,j] = ( Ve(i,j)*V(i+1,j) + Vo(i,j) * V(i-1,j) + Vn(i,j) * V(i,j+1) + Vs(i,j) * V(i,j-1) - rho(i,j) ) / Vc(i,j)
 # END OF THE GAUSSE-SEIDEL AND/OR SOR
 
 t2=time.clock()-t2
 
-
-# In[102]:
 
 # FIGURES
 fig, ax = plt.subplots(dpi = 150)
@@ -177,33 +165,33 @@ Ex_field = np.zeros((Nx,Ny))
 Ey_field = np.zeros((Nx,Ny))
 for i in range(Nx):
     for j in range(Ny):
-        Ex_field[i,j] = -2 * E(i+1,j) * (V(i+1,j) - V(i,j)) / (dx * (E(i,j) + E(i+1,j) ))
+        Ex_field[i,j] = -2 * E(i+1,j) * (Vact[i+1,j] - Vact[i,j]) / (dx * (E(i,j) + E(i+1,j) ))
 
 for i in range(Nx):
     for j in range(Ny):
-        Ey_field[i,j] = -2 * E(i,j+1) * (V(i,j+1) - V(i,j)) / (dy * (E(i,j) + E(i,j+1) ))
+        Ey_field[i,j] = -2 * E(i,j+1) * (Vact[i,j+1] - Vact[i,j]) / (dy * (E(i,j) + E(i,j+1) ))
 
 
 # In[104]:
 
-fig, ax = plt.subplots(dpi = 150)
-ax.imshow(Ex_field)
+ig, ax = plt.subplots(dpi = 150)
+contour_plot = plt.contourf(np.linspace(dx/2. , 1.-dx/2., Nx), np.linspace( dx/2. , 1.-dx/2. , Ny), np.transpose(Ex_field), 100, extend='both');
+plt.colorbar(contour_plot);
 plt.xlabel("x [cm]");
 plt.ylabel("y [cm]");
 plt.title("Electricfield in $x$-direction")
 plt.savefig("Ex_field_%g.png" %N_iteration);
-plt.show()
+plt.show();
 
-fig, ax = plt.subplots(dpi = 150)
+
+ig, ax = plt.subplots(dpi = 150)
+contour_plot = plt.contourf(np.linspace(dx/2. , 1.-dx/2., Nx), np.linspace( dx/2. , 1.-dx/2. , Ny), np.transpose(Ey_field), 100, extend='both');
+plt.colorbar(contour_plot);
 plt.xlabel("x [cm]");
 plt.ylabel("y [cm]");
 plt.title("Electricfield in $y$-direction")
 plt.savefig("Ey_field_%g.png" %N_iteration);
-plt.imshow(Ey_field)
-plt.show()
-
-
-# In[ ]:
+plt.show();
 
 
 
