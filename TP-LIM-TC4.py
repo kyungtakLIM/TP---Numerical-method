@@ -132,7 +132,7 @@ plt.colorbar(contour_plot);
 plt.xlabel("x [cm]");
 plt.ylabel("y [cm]");
 plt.grid()
-plt.savefig("V_xy_%g_TC2.png" %N_iteration);
+plt.savefig("V_xy_%g_TC4.png" %N_iteration);
 plt.show();
 
 fig, ax = plt.subplots(dpi = 150)
@@ -140,7 +140,7 @@ plt.plot(np.linspace(dx/2.,1.-dx/2., Nx),Vact[:,Ny/2],'ro');
 plt.xlabel("x [cm]");
 plt.ylabel("V [V]");
 plt.grid()
-plt.savefig("V_x_%g_TC2.png" %N_iteration);
+plt.savefig("V_x_%g_TC4.png" %N_iteration);
 plt.show();
 plt.clf();
 
@@ -166,7 +166,7 @@ plt.colorbar(contour_plot);
 plt.xlabel("x [cm]");
 plt.ylabel("y [cm]");
 plt.title("Electricfield in $x$-direction")
-plt.savefig("Ex_field_%g.png" %N_iteration);
+plt.savefig("Ex_field_%g_TC4.png" %N_iteration);
 plt.show();
 
 
@@ -176,5 +176,5 @@ plt.colorbar(contour_plot);
 plt.xlabel("x [cm]");
 plt.ylabel("y [cm]");
 plt.title("Electricfield in $y$-direction")
-plt.savefig("Ey_field_%g.png" %N_iteration);
+plt.savefig("Ey_field_%g_TC4.png" %N_iteration);
 plt.show();
