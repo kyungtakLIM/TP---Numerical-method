@@ -166,7 +166,7 @@ plt.colorbar(contour_plot);
 plt.xlabel("x [cm]");
 plt.ylabel("y [cm]");
 plt.title("Electricfield in $x$-direction")
-plt.savefig("Ex_field_%g.png" %N_iteration);
+plt.savefig("Ex_field_%g_TC2.png" %N_iteration);
 plt.show();
 
 
@@ -176,7 +176,7 @@ plt.colorbar(contour_plot);
 plt.xlabel("x [cm]");
 plt.ylabel("y [cm]");
 plt.title("Electricfield in $y$-direction")
-plt.savefig("Ey_field_%g.png" %N_iteration);
+plt.savefig("Ey_field_%g_TC2.png" %N_iteration);
 plt.show();
 
 
