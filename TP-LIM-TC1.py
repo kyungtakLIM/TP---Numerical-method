@@ -174,7 +174,7 @@ for i in range(Nx-1):
 
 # In[104]:
 
-ig, ax = plt.subplots(dpi = 150)
+fig, ax = plt.subplots(dpi = 150)
 contour_plot = plt.contourf(np.linspace(dx/2. , 1.-dx/2., Nx), np.linspace( dx/2. , 1.-dx/2. , Ny), np.transpose(Ex_field), 100, extend='both');
 plt.colorbar(contour_plot);
 plt.xlabel("x [cm]");
@@ -184,7 +184,7 @@ plt.savefig("Ex_field_%g.png" %N_iteration);
 plt.show();
 
 
-ig, ax = plt.subplots(dpi = 150)
+fig, ax = plt.subplots(dpi = 150)
 contour_plot = plt.contourf(np.linspace(dx/2. , 1.-dx/2., Nx), np.linspace( dx/2. , 1.-dx/2. , Ny), np.transpose(Ey_field), 100, extend='both');
 plt.colorbar(contour_plot);
 plt.xlabel("x [cm]");
